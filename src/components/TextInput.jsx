@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useContext, useState } from 'react';
+import { TextContext } from '../context/TextProvider';
 
-function TextInput({ onAddText }) {
-  const [inputValue, setInputValue] = useState("");
+function TextInput() {
+  const { onAddText } = useContext(TextContext);
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -11,7 +13,7 @@ function TextInput({ onAddText }) {
     e.preventDefault();
     if (inputValue.trim()) {
       onAddText(inputValue);
-      setInputValue("");
+      setInputValue('');
     }
   };
 
